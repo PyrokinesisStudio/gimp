@@ -30,6 +30,9 @@
 #include "widgets/gimpdialogfactory.h"
 #include "widgets/gimpwindowstrategy.h"
 
+#include "gimpdisplay.h"
+#include "gimpdisplayshell.h"
+
 #include "gimpmultiwindowstrategy.h"
 
 
@@ -71,7 +74,11 @@ gimp_multi_window_strategy_show_dockable_dialog (GimpWindowStrategy *strategy,
                                                  GdkMonitor         *monitor,
                                                  const gchar        *identifiers)
 {
+  GimpDisplay      *display = GIMP_DISPLAY (gimp_get_empty_display (gimp));
+  GimpDisplayShell *shell   = gimp_display_get_shell (display);
+
   return gimp_dialog_factory_dialog_raise (factory, monitor,
+                                           GTK_WIDGET (gimp_display_shell_get_window (shell)),
                                            identifiers, -1);
 }
 
