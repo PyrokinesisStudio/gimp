@@ -325,7 +325,6 @@ gimp_levels_tool_dialog (GimpFilterTool *filter_tool)
   GtkAdjustment    *adjustment;
   GtkWidget        *bar;
   GtkWidget        *handle_bar;
-  GtkAdjustment    *data;
   gint              border;
 
   g_signal_connect (filter_tool->settings_box, "file-dialog-setup",
